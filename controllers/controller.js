@@ -5,10 +5,10 @@ const burger = require("../models/burger");
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function (req, res) {
     burger.selectAll(function (data) {
-        var burgObject = {
+        var burgObj = {
             burgers: data
         };
-        res.render("index", burgObject);
+        res.render("index", burgObj);
     });
 });
 
@@ -19,7 +19,7 @@ router.post("/api/burgers", function (req, res) {
 });
 
 router.put("/api/burgers", function (req, res) {
-    let condition = "id = '" + req.body.id + "'";
+    let state = "id = '" + req.body.id + "'";
     let col, val;
     if (req.body.burger_name) {
         col = "burger_name";
@@ -28,9 +28,9 @@ router.put("/api/burgers", function (req, res) {
         col = "devoured";
         val = req.body.devoured;
     }
-    burger.updateOne(col, val, condition, function (result) {
+    burger.updateOne(col, val, state, function (result) {
         if (result.changedRows === 0) {
-            // If no rows were changed, then the ID must not exist, so 404
+
             return res.status(404).end();
         }
         res.status(200).end();
@@ -38,8 +38,8 @@ router.put("/api/burgers", function (req, res) {
 });
 
 router.delete("/api/burgers", function (req, res) {
-    let condition = "id = '" + req.body.id + "'";
-    burger.deleteOne(condition, function () {
+    let state = "id = '" + req.body.id + "'";
+    burger.deleteOne(state, function () {
         res.status(200).end();
     });
 });

@@ -1,0 +1,19 @@
+<li class='list-group-item {{#if devoured}}list-group-item-warning{{else}}list-group-item-dark{{/if}} burger-item'
+    data-name="{{ burger_name }}">
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-5">
+            <span>{{ burger_name }}</span>
+            <input type="text" class="edit" style="display: none;" data-id="{{ id }}">
+        </div>
+        {{#if devoured}}
+        <div class="col col-lg-5">
+            <button class="change-devour btn btn-success" data-id="{{ id }}" data-newdevoured="{{ devoured }}">
+                DEVOUR IT!
+            </button>
+        </div>
+        <div class="col col-lg-2">
+            <button class="delete btn btn-danger" data-id="{{ id }}">x</button>
+        </div>
+        {{/if}}
+    </div>
+</li>

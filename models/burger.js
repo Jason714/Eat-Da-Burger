@@ -13,14 +13,14 @@ let burger = {
         });
     },
 
-    updateOne: function (cols, vals, condition, cb) {
-        orm.updateOne("burgers", cols, vals, condition, function (res) {
+    updateOne: function (cols, vals, state, cb) {
+        orm.updateOne("burgers", cols, vals, state, function (res) {
             cb(res);
         });
     },
 
-    deleteOne: function (condition, cb) {
-        orm.deleteOne("burgers", condition, function (res) {
+    deleteOne: function (state, cb) {
+        orm.deleteOne("burgers", state, function (res) {
             cb(res);
         });
     }
