@@ -1,0 +1,41 @@
+<div class="container" style="flex: 1 0 auto;">
+    <div class="row justify-content-md-center">
+        <h5>ADD a burger you want to eat and then click Submit button.</h5>
+        <h5 class="pt-1 pb-2">EDIT the burger by clicking on
+            the burger name and then press Enter; DELETE the burger or DEVOUR IT.</h5>
+    </div>
+
+    <div class="row justify-content-md-center">
+        <form class="form-inline create-form">
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="burger_name" class="sr-only">Enter burger name</label>
+                <input type="text" class="form-control" id="burger_name" name="burger_name"
+                    placeholder="Enter burger name">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+
+        </form>
+    </div>
+
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-5">
+            <ul class="list-group">
+                {{#each burgers}}
+                {{#unless devoured}}
+                {{> burger-block devoured=true}}
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col col-lg-2">&nbsp;</div>
+        <div class="col col-lg-5">
+            <ul>
+                {{#each burgers}}
+                {{#if devoured}}
+                {{> burger-block devoured=false}}
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
